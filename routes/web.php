@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,6 @@ Route::get('/', function () {
 Route::view('home', 'home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource('articles', 'ArticleController');
+    Route::resource('articles', ArticleController::class);
 });
 
