@@ -40,7 +40,10 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        //The class of of Articles creates a request to all the data
+        //The class of Articles was created in the app/model/articles.php file
+        //Then we get the user id of for the articles
+        Article::create($request->all() + ['user_id' => auth()->id()] );
 
         return redirect()->route('articles.index');
     }
