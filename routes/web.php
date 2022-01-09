@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController; 
+use App\Http\Controllers\CategoryController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,12 @@ Route::view('home', 'home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('articles', ArticleController::class);
+
+
+         // Administrator routes created for admin users only
+         Route::group(['middleware' => 'is_admin'], function() {
+         Route::resource('categories', CategoryController::class);
+});
+
 });
 
