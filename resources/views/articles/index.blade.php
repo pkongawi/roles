@@ -13,6 +13,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>Title</th>
                         @if (auth()->user()->is_admin)
                                 <th>User</th>
                             @endif
