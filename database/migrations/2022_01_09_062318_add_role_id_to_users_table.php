@@ -14,19 +14,17 @@ class AddRoleIdToUsersTable extends Migration
      */
     public function up()
     {
-        // Schema::table('users', function (Blueprint $table) {
-        //     $table->unsignedBigInteger('role_id')->default(1);
-        //     $table->foreign('role_id')->references('id')->on('roles');
-        // });
-        //This function is already created in the add_user_id_to_articles
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('role_id')->default(1);
+            $table->foreign('role_id')->references('id')->on('roles');
+        });
+    
+     
+       User::where('is_admin', 1)->update(['role_id' => 2]);
 
-
-        //Might not be able to acces the User class
-       // User::where('is_admin', 1)->update(['role_id' => 2]);
-
-        // Schema::table('users', function (Blueprint $table) {
-        //     $table->removeColumn('is_admin');
-        // });
+        Schema::table('users', function (Blueprint $table) {
+            $table->removeColumn('is_admin');
+        });
         //this table is already created in the add_is_admin_to_users_table
 
     }

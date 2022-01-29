@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        
+
         //get the artiles from each user based on their id
         $articles = Article::with('user')->get();
 
@@ -45,6 +45,8 @@ class ArticleController extends Controller
         //The class of of Articles creates a request to all the data
         //The class of Articles was created in the app/model/articles.php file
         //Then we get the user id of for the articles
+
+        
         Article::create($request->all() +
         [
             'user_id' => auth()->id(),
